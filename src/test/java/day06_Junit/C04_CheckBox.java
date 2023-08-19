@@ -2,6 +2,7 @@ package day06_Junit;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,7 +20,10 @@ public class C04_CheckBox {
             Checkbox2 seçili değilse onay kutusunu tıklayın
 
      */
+
     WebDriver driver;
+
+
 
     @Before
     public void setUp() throws Exception {
