@@ -1,5 +1,8 @@
 package utilities;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
@@ -21,6 +24,11 @@ import java.time.Duration;
 import java.util.Date;
 
 public abstract class TestBase {
+
+    protected ExtentReports extentReport;//-->raporlamayı başlatır
+    protected ExtentHtmlReporter extentHtmlReporter;//-->Html formatında rapor oluşturur
+    protected ExtentTest extentTest;//-->Test adımlarına bilgi eklenir
+
     protected WebDriver driver;
     @Before
     public void setUp() throws Exception {
@@ -28,6 +36,7 @@ public abstract class TestBase {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+
     }
 
     @After
@@ -111,6 +120,20 @@ public abstract class TestBase {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    //Extent Report
+    public void rapor(String browser,String reportName){
+        extentReport = new ExtentReports();
+        String tarih = new SimpleDateFormat("_hh_mm_ss_ddMMyyyy").format(new Date());
+        String dosyaYolu = "target/extentReport/report"+tarih+".html";
+        extentHtmlReporter = new ExtentHtmlReporter(dosyaYolu);
+        extentReport.attachReporter(extentHtmlReporter);
+        //Raporda gözükmesini istediğimiz bilgiler
+        extentReport.setSystemInfo("Tester","Erol");
+        extentReport.setSystemInfo("browser",browser);
+        extentHtmlReporter.config().setDocumentTitle("ExtentReport");
+        extentHtmlReporter.config().setReportName(reportName);
     }
 
 }
