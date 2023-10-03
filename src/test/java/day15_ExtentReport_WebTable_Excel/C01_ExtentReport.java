@@ -1,4 +1,5 @@
-package day15_ExtentReport_Webtable_Excel;
+package day15_ExtentReport_WebTable_Excel;
+
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -6,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import utilities.TestBase;
 
 public class C01_ExtentReport extends TestBase {
+
     @Test
     public void test01() {
         rapor("Chrome","AmazonTesti");
@@ -17,10 +19,13 @@ public class C01_ExtentReport extends TestBase {
 
         //Arama kutusunda iphone aratalim
         WebElement aramaKutusu = driver.findElement(By.id("twotabsearchtextbox"));
-        extentTest.info("Arama Kutusu Locate Edildi");
-        aramaKutusu.sendKeys("iphone",Keys.ENTER);
+        extentTest.info("Arama Kutusu locate edildi");
+        aramaKutusu.sendKeys("iphone", Keys.ENTER);
         extentTest.info("Arama kutusunda Iphone aratildi");
         extentReport.flush();
+
+
+
 
     }
 }

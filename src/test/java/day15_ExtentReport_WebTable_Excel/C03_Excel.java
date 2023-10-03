@@ -1,23 +1,24 @@
-package day15_ExtentReport_Webtable_Excel;
+package day15_ExtentReport_WebTable_Excel;
 
 import org.apache.poi.ss.usermodel.*;
 import org.junit.Test;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class C03_Excel {
+
     @Test
     public void test01() throws IOException {
+
         /*
-            Eğer projemizde excel dosyasından veri almak istiyorsak öncelikle mvnrepository.com adresinden arama çubuğuna
+         Eğer projemizde excel dosyasından veri almak istiyorsak öncelikle mvnrepository.com adresinden arama çubuğuna
         poi yazarak apache poi ve poi_ooxml dependency'lerini pom.xml dosyamıza kopyalamamız gerekir. Her iki dependeny
         nin de versiyonları aynı olmalı.
          */
         //1- Projemize resources package'ı altına koyduğumuz excel dosyamızın yolunu alırız
         String dosyaYolu = "src/test/java/resources/Capitals.xlsx";
 
-        //2- Dosyayı okuyabilmemiz için javada akışa almamız gerekir
+        //2- Dosyayi okuyabilmemiz icin h=javavda akisa almamiz gerekir
         FileInputStream fis = new FileInputStream(dosyaYolu);
 
         //3- Java ortamında bir excel dosyası oluşturabilmek için
@@ -33,12 +34,18 @@ public class C03_Excel {
         Cell cell = row.getCell(0);
 
         //Sout içinde cell bilgisini yazdırdığımızda 1. satır 1. hücredeki bilgiyi verir
-        System.out.println(cell);//-->COUNTRY
+        System.out.println(cell);
 
         /*
-        NOT: Excel dosyanız açıkken işlem yapmayınız
-            Excel dosyasında herhangi bir hücrede değişiklik yaptıysanız excel'i kapatırken kaydetmeyiniz
-         */
+NOT: Excel dosyanız açıkken işlem yapmayınız
+    Excel dosyasında herhangi bir hücrede değişiklik yaptıysanız excel'i kapatırken kaydetmeyiniz
+ */
+
+
+
+
+
 
     }
+
 }
